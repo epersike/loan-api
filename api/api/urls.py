@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token
+
 from .loan import views as loanviews
 from .contracts import views as contractsviews
 
@@ -29,5 +31,6 @@ router.register(r'payments', contractsviews.PaymentViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
+    path('login/', obtain_jwt_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
