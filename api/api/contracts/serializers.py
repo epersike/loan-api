@@ -1,14 +1,14 @@
-from django.contrib.auth.models import User, Group
+from .models import Contract, Payment
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class ContractSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'groups')
+        model = Contract
+        fields = ('total_amount', 'qty_payment', 'interest_rate','ip_address', 'ts_subscription', 'bank_name', 'customer_name')
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class PaymentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Group
-        fields = ('url', 'name')
+        model = Payment
+        fields = ('id', 'payment_original_date', 'payment_date', 'subtotal', 'total', 'contract')

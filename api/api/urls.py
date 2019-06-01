@@ -16,10 +16,14 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 from .loan import views as loanviews
+from .contracts import views as contractsviews
 
 router = routers.DefaultRouter()
 router.register(r'users', loanviews.UserViewSet)
 router.register(r'groups', loanviews.GroupViewSet)
+
+router.register(r'contracts', contractsviews.ContractViewSet)
+router.register(r'payments', contractsviews.PaymentViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
