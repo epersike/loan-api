@@ -25,3 +25,7 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
     queryset = Payment.objects.all().order_by('payment_original_date')
     serializer_class = PaymentSerializer
+
+    def create(self, *args, **kwargs):
+        return super(PaymentViewSet, self).create(*args, **kwargs)
+
